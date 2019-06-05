@@ -1,0 +1,11 @@
+[package]
+name = "wasm-practice"
+version = "0.1.0"
+authors = ["MATSUMOTO, Katsuyoshi <github@katsyoshi.org>"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+uuid = { version = "0.7", features = ["v4", "wasm-bindgen"] }
+wasm-bindgen = "*"

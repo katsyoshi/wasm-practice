@@ -7,5 +7,6 @@ authors = ["MATSUMOTO, Katsuyoshi <github@katsyoshi.org>"]
 crate-type = ["cdylib"]
 
 [dependencies]
-uuid = { version = "0.7", features = ["v4", "wasm-bindgen"] }
+uuid = { version = "*", features = ["v4", "wasm-bindgen"] }
 wasm-bindgen = "*"
+web-sys = { features = ["Document", "Element", "HtmlElement", "Node", "Window"] }

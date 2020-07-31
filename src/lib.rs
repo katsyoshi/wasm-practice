@@ -12,6 +12,15 @@ pub fn fibo(n: u128) -> u128 {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_fibo() {
+        assert_eq!(fibo(32), 3524578);
+    }
+}
+
 pub fn uuidv4() -> String {
     Uuid::new_v4().to_string()
 }
@@ -36,7 +45,7 @@ pub fn run() -> Result<(), JsValue> {
     content.append_child(&val)?;
 
     let val = document.create_element("div")?;
-    val.set_inner_html(&format!("FIBO(32): {}", fibo(64)));
+    val.set_inner_html(&format!("FIBO(32): {}", fibo(32)));
     content.append_child(&val)?;
 
     let div = document.create_element("div")?;

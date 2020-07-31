@@ -4,7 +4,7 @@ extern crate uuid;
 use wasm_bindgen::prelude::*;
 use uuid::Uuid;
 
-pub fn fibo(n: i32) -> i32 {
+pub fn fibo(n: u128) -> u128 {
     if n <= 1 {
         1
     } else {
@@ -36,7 +36,7 @@ pub fn run() -> Result<(), JsValue> {
     content.append_child(&val)?;
 
     let val = document.create_element("div")?;
-    val.set_inner_html(&format!("FIBO(30): {}", fibo(30)));
+    val.set_inner_html(&format!("FIBO(32): {}", fibo(64)));
     content.append_child(&val)?;
 
     let div = document.create_element("div")?;

@@ -39,5 +39,14 @@ pub fn run() -> Result<(), JsValue> {
     val.set_inner_html(&format!("FIBO(30): {}", fibo(30)));
     content.append_child(&val)?;
 
+    let div = document.create_element("div")?;
+    let link = document.create_element("a")?;
+    div.set_attribute("style", "text-align:right;")?;
+    link.set_attribute("href", "/")?;
+    link.set_inner_html("back...");
+    link.set_attribute("class", "and_more")?;
+    div.append_child(&link)?;
+    content.append_child(&div)?;
+
     Ok(())
 }

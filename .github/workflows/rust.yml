@@ -20,13 +20,13 @@ jobs:
       run: wasm-pack build --release --target web
     - name: Run tests
       run: cargo test --verbose
-    - name: Deploy
-      uses: Pendect/action-rsyncer@v1.1.0
-      env:
-        DEPLOY_KEY: ${{ secrets.SSH_KEY }}
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@4.1
       with:
-        flags: '-avzr --delete'
-        options: ''
-        ssh_options: '-p 2222'
-        src: 'pkg/'
-        dest: 'katsu@katsyoshi.org:src/webpage/pkg/'
+        switches: -avzr --delete
+        path: ${{ secrets.DEPLOY_PATH }}
+        remote_path: ${{ secrets.DEPLOY_DEST }}
+        remote_host: ${{ secrets.DEPLOY_HOST }}
+        remote_port: ${{ secrets.DEPLOY_PORT }}
+        remote_user: ${{ secrets.DEPLOY_USER }}
+        remote_key: ${{ secrets.DEPLOY_KEY }}
